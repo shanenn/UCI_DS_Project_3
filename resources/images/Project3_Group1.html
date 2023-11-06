@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)http://127.0.0.1:5500/Project_3.1/Project_3/javascript/templates/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Project3_Group1</title>
+        <link rel="stylesheet" href="./Project3_Group1_files/bootstrap.min.css">
+        <link rel="stylesheet" href="./Project3_Group1_files/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+        <link rel="stylesheet" type="text/css" href="./Project3_Group1_files/style.css">
+    <style id="plotly.js-style-global"></style><style id="plotly.js-style-modebar-c24813"></style><style id="apexcharts-css">@keyframes opaque {
+  0% {
+      opacity: 0
+  }
+
+  to {
+      opacity: 1
+  }
+}
+
+@keyframes resizeanim {
+  0%,to {
+      opacity: 0
+  }
+}
+
+.apexcharts-canvas {
+  position: relative;
+  user-select: none
+}
+
+.apexcharts-canvas ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px
+}
+
+.apexcharts-canvas ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 0 1px rgba(255,255,255,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5)
+}
+
+.apexcharts-inner {
+  position: relative
+}
+
+.apexcharts-text tspan {
+  font-family: inherit
+}
+
+.legend-mouseover-inactive {
+  transition: .15s ease all;
+  opacity: .2
+}
+
+.apexcharts-legend-text {
+  padding-left: 15px;
+  margin-left: -15px;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0
+}
+
+.apexcharts-tooltip {
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px #999;
+  cursor: default;
+  font-size: 14px;
+  left: 62px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 12;
+  transition: .15s ease all
+}
+
+.apexcharts-tooltip.apexcharts-active {
+  opacity: 1;
+  transition: .15s ease all
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #e3e3e3;
+  background: rgba(255,255,255,.96)
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  color: #fff;
+  background: rgba(30,30,30,.8)
+}
+
+.apexcharts-tooltip * {
+  font-family: inherit
+}
+
+.apexcharts-tooltip-title {
+  padding: 6px;
+  font-size: 15px;
+  margin-bottom: 4px
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: #eceff1;
+  border-bottom: 1px solid #ddd
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+  background: rgba(0,0,0,.7);
+  border-bottom: 1px solid #333
+}
+
+.apexcharts-tooltip-text-goals-value,.apexcharts-tooltip-text-y-value,.apexcharts-tooltip-text-z-value {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 600
+}
+
+.apexcharts-tooltip-text-goals-label:empty,.apexcharts-tooltip-text-goals-value:empty,.apexcharts-tooltip-text-y-label:empty,.apexcharts-tooltip-text-y-value:empty,.apexcharts-tooltip-text-z-value:empty,.apexcharts-tooltip-title:empty {
+  display: none
+}
+
+.apexcharts-tooltip-text-goals-label,.apexcharts-tooltip-text-goals-value {
+  padding: 6px 0 5px
+}
+
+.apexcharts-tooltip-goals-group,.apexcharts-tooltip-text-goals-label,.apexcharts-tooltip-text-goals-value {
+  display: flex
+}
+
+.apexcharts-tooltip-text-goals-label:not(:empty),.apexcharts-tooltip-text-goals-value:not(:empty) {
+  margin-top: -6px
+}
+
+.apexcharts-tooltip-marker {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 0;
+  margin-right: 10px;
+  border-radius: 50%
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 0 10px;
+  display: none;
+  text-align: left;
+  justify-content: left;
+  align-items: center
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+  opacity: 1
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active,.apexcharts-tooltip-series-group:last-child {
+  padding-bottom: 4px
+}
+
+.apexcharts-tooltip-series-group-hidden {
+  opacity: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0!important
+}
+
+.apexcharts-tooltip-y-group {
+  padding: 6px 0 5px
+}
+
+.apexcharts-custom-tooltip,.apexcharts-tooltip-box {
+  padding: 4px 8px
+}
+
+.apexcharts-tooltip-boxPlot {
+  display: flex;
+  flex-direction: column-reverse
+}
+
+.apexcharts-tooltip-box>div {
+  margin: 4px 0
+}
+
+.apexcharts-tooltip-box span.value {
+  font-weight: 700
+}
+
+.apexcharts-tooltip-rangebar {
+  padding: 5px 8px
+}
+
+.apexcharts-tooltip-rangebar .category {
+  font-weight: 600;
+  color: #777
+}
+
+.apexcharts-tooltip-rangebar .series-name {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px
+}
+
+.apexcharts-xaxistooltip,.apexcharts-yaxistooltip {
+  opacity: 0;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #eceff1;
+  border: 1px solid #90a4ae
+}
+
+.apexcharts-xaxistooltip {
+  padding: 9px 10px;
+  transition: .15s ease all
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-dark {
+  background: rgba(0,0,0,.7);
+  border: 1px solid rgba(0,0,0,.5);
+  color: #fff
+}
+
+.apexcharts-xaxistooltip:after,.apexcharts-xaxistooltip:before {
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none
+}
+
+.apexcharts-xaxistooltip:after {
+  border-color: transparent;
+  border-width: 6px;
+  margin-left: -6px
+}
+
+.apexcharts-xaxistooltip:before {
+  border-color: transparent;
+  border-width: 7px;
+  margin-left: -7px
+}
+
+.apexcharts-xaxistooltip-bottom:after,.apexcharts-xaxistooltip-bottom:before {
+  bottom: 100%
+}
+
+.apexcharts-xaxistooltip-top:after,.apexcharts-xaxistooltip-top:before {
+  top: 100%
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  border-bottom-color: #eceff1
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: #90a4ae
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after,.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+  border-bottom-color: rgba(0,0,0,.5)
+}
+
+.apexcharts-xaxistooltip-top:after {
+  border-top-color: #eceff1
+}
+
+.apexcharts-xaxistooltip-top:before {
+  border-top-color: #90a4ae
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after,.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+  border-top-color: rgba(0,0,0,.5)
+}
+
+.apexcharts-xaxistooltip.apexcharts-active {
+  opacity: 1;
+  transition: .15s ease all
+}
+
+.apexcharts-yaxistooltip {
+  padding: 4px 10px
+}
+
+.apexcharts-yaxistooltip.apexcharts-theme-dark {
+  background: rgba(0,0,0,.7);
+  border: 1px solid rgba(0,0,0,.5);
+  color: #fff
+}
+
+.apexcharts-yaxistooltip:after,.apexcharts-yaxistooltip:before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none
+}
+
+.apexcharts-yaxistooltip:after {
+  border-color: transparent;
+  border-width: 6px;
+  margin-top: -6px
+}
+
+.apexcharts-yaxistooltip:before {
+  border-color: transparent;
+  border-width: 7px;
+  margin-top: -7px
+}
+
+.apexcharts-yaxistooltip-left:after,.apexcharts-yaxistooltip-left:before {
+  left: 100%
+}
+
+.apexcharts-yaxistooltip-right:after,.apexcharts-yaxistooltip-right:before {
+  right: 100%
+}
+
+.apexcharts-yaxistooltip-left:after {
+  border-left-color: #eceff1
+}
+
+.apexcharts-yaxistooltip-left:before {
+  border-left-color: #90a4ae
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after,.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+  border-left-color: rgba(0,0,0,.5)
+}
+
+.apexcharts-yaxistooltip-right:after {
+  border-right-color: #eceff1
+}
+
+.apexcharts-yaxistooltip-right:before {
+  border-right-color: #90a4ae
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after,.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+  border-right-color: rgba(0,0,0,.5)
+}
+
+.apexcharts-yaxistooltip.apexcharts-active {
+  opacity: 1
+}
+
+.apexcharts-yaxistooltip-hidden {
+  display: none
+}
+
+.apexcharts-xcrosshairs,.apexcharts-ycrosshairs {
+  pointer-events: none;
+  opacity: 0;
+  transition: .15s ease all
+}
+
+.apexcharts-xcrosshairs.apexcharts-active,.apexcharts-ycrosshairs.apexcharts-active {
+  opacity: 1;
+  transition: .15s ease all
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0
+}
+
+.apexcharts-selection-rect {
+  cursor: move
+}
+
+.svg_select_boundingRect,.svg_select_points_rot {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden
+}
+
+.apexcharts-selection-rect+g .svg_select_boundingRect,.apexcharts-selection-rect+g .svg_select_points_rot {
+  opacity: 0;
+  visibility: hidden
+}
+
+.apexcharts-selection-rect+g .svg_select_points_l,.apexcharts-selection-rect+g .svg_select_points_r {
+  cursor: ew-resize;
+  opacity: 1;
+  visibility: visible
+}
+
+.svg_select_points {
+  fill: #efefef;
+  stroke: #333;
+  rx: 2
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: crosshair
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
+  cursor: move
+}
+
+.apexcharts-menu-icon,.apexcharts-pan-icon,.apexcharts-reset-icon,.apexcharts-selection-icon,.apexcharts-toolbar-custom-icon,.apexcharts-zoom-icon,.apexcharts-zoomin-icon,.apexcharts-zoomout-icon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 24px;
+  color: #6e8192;
+  text-align: center
+}
+
+.apexcharts-menu-icon svg,.apexcharts-reset-icon svg,.apexcharts-zoom-icon svg,.apexcharts-zoomin-icon svg,.apexcharts-zoomout-icon svg {
+  fill: #6e8192
+}
+
+.apexcharts-selection-icon svg {
+  fill: #444;
+  transform: scale(.76)
+}
+
+.apexcharts-theme-dark .apexcharts-menu-icon svg,.apexcharts-theme-dark .apexcharts-pan-icon svg,.apexcharts-theme-dark .apexcharts-reset-icon svg,.apexcharts-theme-dark .apexcharts-selection-icon svg,.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg,.apexcharts-theme-dark .apexcharts-zoom-icon svg,.apexcharts-theme-dark .apexcharts-zoomin-icon svg,.apexcharts-theme-dark .apexcharts-zoomout-icon svg {
+  fill: #f3f4f5
+}
+
+.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg,.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg {
+  fill: #008ffb
+}
+
+.apexcharts-theme-light .apexcharts-menu-icon:hover svg,.apexcharts-theme-light .apexcharts-reset-icon:hover svg,.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg {
+  fill: #333
+}
+
+.apexcharts-menu-icon,.apexcharts-selection-icon {
+  position: relative
+}
+
+.apexcharts-reset-icon {
+  margin-left: 5px
+}
+
+.apexcharts-menu-icon,.apexcharts-reset-icon,.apexcharts-zoom-icon {
+  transform: scale(.85)
+}
+
+.apexcharts-zoomin-icon,.apexcharts-zoomout-icon {
+  transform: scale(.7)
+}
+
+.apexcharts-zoomout-icon {
+  margin-right: 3px
+}
+
+.apexcharts-pan-icon {
+  transform: scale(.62);
+  position: relative;
+  left: 1px;
+  top: 0
+}
+
+.apexcharts-pan-icon svg {
+  fill: #fff;
+  stroke: #6e8192;
+  stroke-width: 2
+}
+
+.apexcharts-pan-icon.apexcharts-selected svg {
+  stroke: #008ffb
+}
+
+.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+  stroke: #333
+}
+
+.apexcharts-toolbar {
+  position: absolute;
+  z-index: 11;
+  max-width: 176px;
+  text-align: right;
+  border-radius: 3px;
+  padding: 0 6px 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.apexcharts-menu {
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 3px;
+  right: 10px;
+  opacity: 0;
+  min-width: 110px;
+  transition: .15s ease all;
+  pointer-events: none
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  opacity: 1;
+  pointer-events: all;
+  transition: .15s ease all
+}
+
+.apexcharts-menu-item {
+  padding: 6px 7px;
+  font-size: 12px;
+  cursor: pointer
+}
+
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+  background: #eee
+}
+
+.apexcharts-theme-dark .apexcharts-menu {
+  background: rgba(0,0,0,.7);
+  color: #fff
+}
+
+@media screen and (min-width:768px) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+      opacity: 1
+  }
+}
+
+.apexcharts-canvas .apexcharts-element-hidden,.apexcharts-datalabel.apexcharts-element-hidden,.apexcharts-hide .apexcharts-series-points {
+  opacity: 0
+}
+
+.apexcharts-hidden-element-shown {
+  opacity: 1;
+  transition: 0.25s ease all;
+}
+.apexcharts-datalabel,.apexcharts-datalabel-label,.apexcharts-datalabel-value,.apexcharts-datalabels,.apexcharts-pie-label {
+  cursor: default;
+  pointer-events: none
+}
+
+.apexcharts-pie-label-delay {
+  opacity: 0;
+  animation-name: opaque;
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease
+}
+
+.apexcharts-annotation-rect,.apexcharts-area-series .apexcharts-area,.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,.apexcharts-gridline,.apexcharts-line,.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,.apexcharts-point-annotation-label,.apexcharts-radar-series path,.apexcharts-radar-series polygon,.apexcharts-toolbar svg,.apexcharts-tooltip .apexcharts-marker,.apexcharts-xaxis-annotation-label,.apexcharts-yaxis-annotation-label,.apexcharts-zoom-rect {
+  pointer-events: none
+}
+
+.apexcharts-marker {
+  transition: .15s ease all
+}
+
+.resize-triggers {
+  animation: 1ms resizeanim;
+  visibility: hidden;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden
+}
+
+.contract-trigger:before,.resize-triggers,.resize-triggers>div {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.resize-triggers>div {
+  height: 100%;
+  width: 100%;
+  background: #eee;
+  overflow: auto
+}
+
+.contract-trigger:before {
+  overflow: hidden;
+  width: 200%;
+  height: 200%
+}
+
+.apexcharts-bar-goals-markers{
+  pointer-events: none
+}
+
+.apexcharts-bar-shadows{
+  pointer-events: none
+}
+
+.apexcharts-rangebar-goals-markers{
+  pointer-events: none
+}</style><style id="plotly.js-style-modebar-6ac703"></style></head>
+    
+    <body>
+        <script src="./Project3_Group1_files/d3.v7.min.js"></script>
+        <script src="./Project3_Group1_files/plotly-latest.min.js"></script>
+        <script src="./Project3_Group1_files/anime.min.js"></script>
+        <script src="./Project3_Group1_files/apexcharts"></script>
+   
+    <section>
+            <div class="container responsivegrid">
+                <div id="container-51a52d2797" class="cmp-container">
+                    <div class="section container responsivegrid">
+                        <div class="parsys sectionpar">
+                            <div class="image img-alignment-left"></div>
+                            <img src="./Project3_Group1_files/banner_wfade2.jpg" alt="Project3_Group1" data-emptytext="Image" width="1300" height="500" padding-top:;="" max-height:;="">
+                                <!--<img src="../../resources/images/banner_wfade2.jpg" alt="Project3_Group1" width="1250" height="500" style="background-size:cover; background-position: center top;">-->  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
+    </section>
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <p>Viewing the trends of the Data Analytics field through the lens of its history gives insight into the skills and experience that are most sought after as well as the companies and geographic areas which offer the best salaries and employment conditions.</p>
+                        <p>The use of analytics by business can be found as far back as the 19th century when Frederick Winslow Taylor initiated time management exercises to improve industrial efficiency. In the late 1930s, analytics began receiving more attention as computers became decision-making support systems. Data analytics has evolved significantly with the development of big data, data warehouses, and a variety of software and hardware.</p>
+                        <p>The development of relational databases in the 1970s and non-relational databases with the advancement of the internet in the 1990s ushered in the era of "Big Data" and a new frontier for employment opportunities in data analytics. The origin of the modern data analyst was born out of the use case demands of the internet. Over the past 10 years, the need for data analysts has grown exponentially as more people and companies expand their exposure to the internet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <h5>The demand curve for Data Analytics, when did it really start?</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <h2>Open Source Advancements</h2>
+                        <p>Through the development of open-source advancements, some data science projects can be completed without typing code. However, data scientists are still required to have a combination of technical and soft skills to work actively in the field.</p>
+                        <p>The usage of Data science bootcamps, online courses and communities are aiding analysts to solidify their skills. Our research supports that the technical skills listed above are amongst the highest in-demand in the current job market. Additionally, the following skills are also sought after:</p>
+                        <ol>1.	Data Visualization</ol>
+                        <ol>2.	Data Cleaning</ol>
+                        <ol>3.	MATLAB</ol>
+                        <ol>5.	Python</ol>
+                        <ol>6.	SQL and NoSQL</ol>
+                        <ol>7.	Machine Learning</ol>
+                        <ol>8.	Linear Algebra and Calculus</ol>
+                        <ol>9.	Microsoft Excel</ol>
+                        <ol>10.	Critical Thinking</ol>
+                        <ol>11.	Communication</ol>
+                        <!--Using ________ , we show that the data indicates the most in-demand skills per industry/fields are :-->
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <div class="begin-complete-demo"></div>
+    <div class="well">
+        <h5>Top Platforms:</h5>
+        <select id="selPlatform" onchange="platformChanged(this.value)"><option value="ALL">All Platforms</option><option value="LinkedIn">LinkedIn</option><option value="Upwork">Upwork</option><option value="BeBee">BeBee</option><option value="Trabajo.org">Trabajo.org</option><option value="ZipRecruiter">ZipRecruiter</option><option value="Indeed">Indeed</option><option value="Snagajob">Snagajob</option><option value="Adzuna">Adzuna</option><option value="Jobs Trabajo.org">Jobs Trabajo.org</option><option value="Monster">Monster</option><option value="My ArkLaMiss Jobs">My ArkLaMiss Jobs</option><option value="Built In">Built In</option><option value="Jora">Jora</option><option value="Nexxt">Nexxt</option><option value="Recruit.net">Recruit.net</option><option value="SimplyHired">SimplyHired</option><option value="Big Country Jobs">Big Country Jobs</option><option value="WANE Jobs">WANE Jobs</option><option value="WJHL Jobs">WJHL Jobs</option><option value="Startup Jobs">Startup Jobs</option><option value="JobServe">JobServe</option><option value="Jobgether">Jobgether</option><option value="Dice">Dice</option><option value="My Stateline Jobs">My Stateline Jobs</option><option value="KHON2 Jobs">KHON2 Jobs</option><option value="WREG Jobs">WREG Jobs</option><option value="Ai-Jobs.net">Ai-Jobs.net</option><option value="WayUp">WayUp</option><option value="KSNT Jobs">KSNT Jobs</option><option value="SonicJobs">SonicJobs</option><option value="Clearance Jobs">Clearance Jobs</option><option value="Lensa">Lensa</option><option value="Central Illinois Proud Jobs">Central Illinois Proud Jobs</option><option value="WJTV Jobs">WJTV Jobs</option><option value="Ladders">Ladders</option><option value="Diversity Jobs">Diversity Jobs</option><option value="Talent.com">Talent.com</option><option value="My Valley Jobs Today">My Valley Jobs Today</option></select>
+      </div>
+    <div id="skillBar" style="min-height: 389.7px;"><div id="apexcharts2nbehwyr" class="apexcharts-canvas apexcharts2nbehwyr apexcharts-theme-light" style="width: 1246px; height: 389.7px;"><svg id="SvgjsSvg1006" width="1246" height="389.70000000000005" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><foreignobject x="0" y="0" width="1246" height="389.70000000000005"><div class="apexcharts-legend apexcharts-align-center apx-legend-position-left" xmlns="http://www.w3.org/1999/xhtml" style="position: absolute; left: 520px; top: 35px;"><div class="apexcharts-legend-series" rel="1" seriesname="sql" data:collapsed="false" style="margin: 3px 5px;"><span class="apexcharts-legend-marker" rel="1" data:collapsed="false" style="background: rgb(0, 143, 251) !important; color: rgb(0, 143, 251); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="1" i="0" data:default-text="sql%3A%20%2014766" data:collapsed="false" style="color: rgb(0, 143, 251); font-size: 16px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">sql:  14766</span></div><div class="apexcharts-legend-series" rel="2" seriesname="excel" data:collapsed="false" style="margin: 3px 5px;"><span class="apexcharts-legend-marker" rel="2" data:collapsed="false" style="background: rgb(0, 227, 150) !important; color: rgb(0, 227, 150); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="2" i="1" data:default-text="excel%3A%20%209544" data:collapsed="false" style="color: rgb(0, 227, 150); font-size: 16px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">excel:  9544</span></div><div class="apexcharts-legend-series" rel="3" seriesname="python" data:collapsed="false" style="margin: 3px 5px;"><span class="apexcharts-legend-marker" rel="3" data:collapsed="false" style="background: rgb(254, 176, 25) !important; color: rgb(254, 176, 25); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="3" i="2" data:default-text="python%3A%20%208284" data:collapsed="false" style="color: rgb(254, 176, 25); font-size: 16px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">python:  8284</span></div><div class="apexcharts-legend-series" rel="4" seriesname="tableau" data:collapsed="false" style="margin: 3px 5px;"><span class="apexcharts-legend-marker" rel="4" data:collapsed="false" style="background: rgb(255, 69, 96) !important; color: rgb(255, 69, 96); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="4" i="3" data:default-text="tableau%3A%20%208104" data:collapsed="false" style="color: rgb(255, 69, 96); font-size: 16px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">tableau:  8104</span></div><div class="apexcharts-legend-series" rel="5" seriesname="power_bi" data:collapsed="false" style="margin: 3px 5px;"><span class="apexcharts-legend-marker" rel="5" data:collapsed="false" style="background: rgb(119, 93, 208) !important; color: rgb(119, 93, 208); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="5" i="4" data:default-text="power_bi%3A%20%207923" data:collapsed="false" style="color: rgb(119, 93, 208); font-size: 16px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">power_bi:  7923</span></div></div><style type="text/css">	
+    	
+      .apexcharts-legend {	
+        display: flex;	
+        overflow: auto;	
+        padding: 0 10px;	
+      }	
+      .apexcharts-legend.apx-legend-position-bottom, .apexcharts-legend.apx-legend-position-top {	
+        flex-wrap: wrap	
+      }	
+      .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {	
+        flex-direction: column;	
+        bottom: 0;	
+      }	
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left, .apexcharts-legend.apx-legend-position-top.apexcharts-align-left, .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {	
+        justify-content: flex-start;	
+      }	
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {	
+        justify-content: center;  	
+      }	
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-right, .apexcharts-legend.apx-legend-position-top.apexcharts-align-right {	
+        justify-content: flex-end;	
+      }	
+      .apexcharts-legend-series {	
+        cursor: pointer;	
+        line-height: normal;	
+      }	
+      .apexcharts-legend.apx-legend-position-bottom .apexcharts-legend-series, .apexcharts-legend.apx-legend-position-top .apexcharts-legend-series{	
+        display: flex;	
+        align-items: center;	
+      }	
+      .apexcharts-legend-text {	
+        position: relative;	
+        font-size: 14px;	
+      }	
+      .apexcharts-legend-text *, .apexcharts-legend-marker * {	
+        pointer-events: none;	
+      }	
+      .apexcharts-legend-marker {	
+        position: relative;	
+        display: inline-block;	
+        cursor: pointer;	
+        margin-right: 3px;	
+        border-style: solid;
+      }	
+      	
+      .apexcharts-legend.apexcharts-align-right .apexcharts-legend-series, .apexcharts-legend.apexcharts-align-left .apexcharts-legend-series{	
+        display: inline-block;	
+      }	
+      .apexcharts-legend-series.apexcharts-no-click {	
+        cursor: auto;	
+      }	
+      .apexcharts-legend .apexcharts-hidden-zero-series, .apexcharts-legend .apexcharts-hidden-null-series {	
+        display: none !important;	
+      }	
+      .apexcharts-inactive-legend {	
+        opacity: 0.45;	
+      }</style></foreignobject><g id="SvgjsG1008" class="apexcharts-inner apexcharts-graphical" transform="translate(441, 21)"><defs id="SvgjsDefs1007"><clippath id="gridRectMask2nbehwyr"><rect id="SvgjsRect1010" width="372" height="379" x="-4" y="-6" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clippath><clippath id="forecastMask2nbehwyr"></clippath><clippath id="nonForecastMask2nbehwyr"></clippath><clippath id="gridRectMarkerMask2nbehwyr"><rect id="SvgjsRect1011" width="370" height="371" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clippath></defs><g id="SvgjsG1012" class="apexcharts-radialbar"><g id="SvgjsG1013"><g id="SvgjsG1014" class="apexcharts-tracks"><g id="SvgjsG1015" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 183 38.1573170731707 A 144.8426829268293 144.8426829268293 0 1 1 38.1573170731707 183.00000000000003" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="14.675390243902443" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 183 38.1573170731707 A 144.8426829268293 144.8426829268293 0 1 1 38.1573170731707 183.00000000000003"></path></g><g id="SvgjsG1017" class="apexcharts-radialbar-track apexcharts-track" rel="2"><path id="apexcharts-radialbarTrack-1" d="M 183 58.286585365853625 A 124.71341463414637 124.71341463414637 0 1 1 58.286585365853625 183.00000000000003" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="14.675390243902443" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 183 58.286585365853625 A 124.71341463414637 124.71341463414637 0 1 1 58.286585365853625 183.00000000000003"></path></g><g id="SvgjsG1019" class="apexcharts-radialbar-track apexcharts-track" rel="3"><path id="apexcharts-radialbarTrack-2" d="M 183 78.41585365853655 A 104.58414634146345 104.58414634146345 0 1 1 78.41585365853655 183" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="14.675390243902443" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 183 78.41585365853655 A 104.58414634146345 104.58414634146345 0 1 1 78.41585365853655 183"></path></g><g id="SvgjsG1021" class="apexcharts-radialbar-track apexcharts-track" rel="4"><path id="apexcharts-radialbarTrack-3" d="M 183 98.54512195121947 A 84.45487804878053 84.45487804878053 0 1 1 98.54512195121947 183" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="14.675390243902443" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 183 98.54512195121947 A 84.45487804878053 84.45487804878053 0 1 1 98.54512195121947 183"></path></g><g id="SvgjsG1023" class="apexcharts-radialbar-track apexcharts-track" rel="5"><path id="apexcharts-radialbarTrack-4" d="M 183 118.6743902439024 A 64.3256097560976 64.3256097560976 0 1 1 118.6743902439024 183" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="14.675390243902443" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 183 118.6743902439024 A 64.3256097560976 64.3256097560976 0 1 1 118.6743902439024 183"></path></g></g><g id="SvgjsG1025"><g id="SvgjsG1028" class="apexcharts-series apexcharts-radial-series" seriesName="sql" rel="1" data:realIndex="0"><path id="SvgjsPath1029" d="M 183 38.1573170731707 A 144.8426829268293 144.8426829268293 0 1 1 87.97465008264442 292.31416043004737" fill="none" fill-opacity="0.85" stroke="rgba(0,143,251,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="15.12926829268293" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="221" data:value="82" index="0" j="0" data:pathOrig="M 183 38.1573170731707 A 144.8426829268293 144.8426829268293 0 1 1 87.97465008264442 292.31416043004737"></path></g><g id="SvgjsG1030" class="apexcharts-series apexcharts-radial-series" seriesName="excel" rel="2" data:realIndex="1"><path id="SvgjsPath1031" d="M 183 58.286585365853625 A 124.71341463414637 124.71341463414637 0 0 1 258.0544065154198 282.600561506081" fill="none" fill-opacity="0.85" stroke="rgba(0,227,150,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="15.12926829268293" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-1" data:angle="143" data:value="53" index="0" j="1" data:pathOrig="M 183 58.286585365853625 A 124.71341463414637 124.71341463414637 0 0 1 258.0544065154198 282.600561506081"></path></g><g id="SvgjsG1032" class="apexcharts-series apexcharts-radial-series" seriesName="python" rel="3" data:realIndex="2"><path id="SvgjsPath1033" d="M 183 78.41585365853655 A 104.58414634146345 104.58414634146345 0 0 1 269.7041868106681 241.48271244969243" fill="none" fill-opacity="0.85" stroke="rgba(254,176,25,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="15.12926829268293" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-2" data:angle="124" data:value="46" index="0" j="2" data:pathOrig="M 183 78.41585365853655 A 104.58414634146345 104.58414634146345 0 0 1 269.7041868106681 241.48271244969243"></path></g><g id="SvgjsG1034" class="apexcharts-series apexcharts-radial-series" seriesName="tableau" rel="4" data:realIndex="3"><path id="SvgjsPath1035" d="M 183 98.54512195121947 A 84.45487804878053 84.45487804878053 0 0 1 254.62179854039147 227.75426683651483" fill="none" fill-opacity="0.85" stroke="rgba(255,69,96,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="15.12926829268293" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-3" data:angle="122" data:value="45" index="0" j="3" data:pathOrig="M 183 98.54512195121947 A 84.45487804878053 84.45487804878053 0 0 1 254.62179854039147 227.75426683651483"></path></g><g id="SvgjsG1036" class="apexcharts-series apexcharts-radial-series" seriesName="power_bi" rel="5" data:realIndex="4"><path id="SvgjsPath1037" d="M 183 118.6743902439024 A 64.3256097560976 64.3256097560976 0 0 1 239.26044596644115 214.18567443796775" fill="none" fill-opacity="0.85" stroke="rgba(119,93,208,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="15.12926829268293" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-4" data:angle="119" data:value="44" index="0" j="4" data:pathOrig="M 183 118.6743902439024 A 64.3256097560976 64.3256097560976 0 0 1 239.26044596644115 214.18567443796775"></path></g><circle id="SvgjsCircle1026" r="51.98791463414636" cx="183" cy="183" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1027" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 0;"></g></g></g></g><line id="SvgjsLine1038" x1="0" y1="0" x2="366" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1039" x1="0" y1="0" x2="366" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><text id="SvgjsText1009" font-family="Helvetica, Arial, sans-serif" x="623" y="16.5" text-anchor="middle" dominant-baseline="auto" font-size="14px" font-weight="900" fill="#373d3f" class="apexcharts-title-text" style="font-family: Helvetica, Arial, sans-serif; opacity: 1;">Number of Times Skill(s) Mentioned</text></svg></div></div>   
+    <script type="text/javascript" src="./Project3_Group1_files/skillData.js"></script>  
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <h2>Future Proofing</h2>
+                            <p>Specializing in an emerging field in data analytics can be a great way to future-proof your career and make yourself a valuable asset to companies. Emerging fields in data analytics are areas that are growing rapidly and have high potential for impact and innovation.</p>
+                            <p>By focusing on developing skills such as creativity, emotional intelligence, problem-solving, adaptability, and communication, you can future-proof your career and ensure your long-term success.</p>
+                            <p>In the fast-evolving landscape of data analytics, staying ahead of the curve is crucial to future-proofing your career. As we step into 2024, the demand for data analytics professionals is skyrocketing, and with it, the need for an upgraded skill set. As we look into the changing landscape of data careers we can see that across the nation needs (and in turn skills) vary from one place to the next.</p>
+                            <!--Positive correlation between level of skills and future proofing job security is demonstrated using _____:-->
+                    </div>
+                </div>
+            </div>
+        </div>             
+    </section>
+    <div class="well">
+        <h5>States:</h5>
+        <select id="selDataset" onchange="optionChanged(this.value)"><option value="ALL">All States</option><option value="AK">Alaska</option><option value="AL">Alabama</option><option value="AR">Arkansas</option><option value="AZ">Arizona</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DC">District of Columbia</option><option value="DE">Delaware</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="IA">Iowa</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="MA">Massachusetts</option><option value="MD">Maryland</option><option value="ME">Maine</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MO">Missouri</option><option value="MS">Mississippi</option><option value="MT">Montana</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="NE">Nebraska</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NV">Nevada</option><option value="NY">New York</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="PR">Puerto Rico</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VA">Virginia</option><option value="VT">Vermont</option><option value="WA">Washington</option><option value="WI">Wisconsin</option><option value="WV">West Virginia</option><option value="WY">Wyoming</option></select>
+      </div>
+    <div id="stateBar" class="js-plotly-plot"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 1058.73px; height: 750px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1058.73" height="750" style="background: rgb(255, 255, 255);"><defs id="defs-6ac703"><g class="clips"><clippath id="clip6ac703xyplot" class="plotclip"><rect width="899" height="385" transform="scale(1,1)"></rect></clippath><clippath class="axesclip" id="clip6ac703x"><rect x="80" y="0" width="899" height="750"></rect></clippath><clippath class="axesclip" id="clip6ac703y"><rect x="0" y="100" width="1058.73" height="385"></rect></clippath><clippath class="axesclip" id="clip6ac703xy"><rect x="80" y="100" width="899" height="385"></rect></clippath></g><g class="gradients"></g></defs><g class="bglayer"></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="80" y="100" width="899" height="385" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="60" y="80" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="979" y="80" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="60" y="485" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="979" y="485" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="169.9" y="485.5" width="719.2" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="80" y="485.5" width="89.9" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="889.1" y="485.5" width="89.9" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="59.5" y="138.5" width="20" height="308" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="59.5" y="446.5" width="20" height="38.5" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="59.5" y="100" width="20" height="38.5" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="gridlayer"><g class="x"></g><g class="y"><path class="ygrid crisp" transform="translate(0,437.71)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,390.41)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,343.12)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,295.83000000000004)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,248.53)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,201.24)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,153.94)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,106.65)" d="M80,0h899" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path></g></g><g class="zerolinelayer"><path class="yzl zl crisp" transform="translate(0,485)" d="M80,0h899" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; stroke-width: 1px;"></path></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="plot" transform="translate(80,100)scale(1,1)" clip-path="url(&#39;#clip6ac703xyplot&#39;)"><g class="barlayer mlayer"><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M8.99,385V77H80.91V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(78, 121, 167); fill-opacity: 1;"></path></g><g class="point"><path d="M98.89,385V288.4H170.81V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(242, 142, 43); fill-opacity: 1;"></path></g><g class="point"><path d="M188.79,385V324.71H260.71V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(225, 87, 89); fill-opacity: 1;"></path></g><g class="point"><path d="M278.69,385V330.38H350.61V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(146, 220, 229); fill-opacity: 1;"></path></g><g class="point"><path d="M368.59,385V330.72H440.51V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(89, 161, 78); fill-opacity: 1;"></path></g><g class="point"><path d="M458.49,385V334.32H530.41V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(237, 201, 73); fill-opacity: 1;"></path></g><g class="point"><path d="M548.39,385V337.02H620.31V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(176, 122, 162); fill-opacity: 1;"></path></g><g class="point"><path d="M638.29,385V339.88H710.21V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(255, 157, 167); fill-opacity: 1;"></path></g><g class="point"><path d="M728.19,385V342.27H800.11V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(156, 117, 95); fill-opacity: 1;"></path></g><g class="point"><path d="M818.09,385V359.08H890.01V385Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(186, 176, 172); fill-opacity: 1;"></path></g></g></g></g></g><g class="overplot"></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="COMPUTER SYSTEMS ANALYSTS" data-math="N" transform="translate(124.95,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">COMPUTER SYSTEMS ANALYSTS</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="SOFTWARE DEVELOPERS, APPLICATIONS" data-math="N" transform="translate(214.85,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">SOFTWARE DEVELOPERS, APPLICATIONS</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="OPERATIONS RESEARCH ANALYSTS" data-math="N" transform="translate(304.75,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">OPERATIONS RESEARCH ANALYSTS</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="FINANCIAL ANALYSTS" data-math="N" transform="translate(394.65,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">FINANCIAL ANALYSTS</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="COMPUTER OCCUPATIONS, ALL OTHER" data-math="N" transform="translate(484.55,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">COMPUTER OCCUPATIONS, ALL OTHER</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="COMPUTER SYSTEMS ANALYST" data-math="N" transform="translate(574.45,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">COMPUTER SYSTEMS ANALYST</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="MANAGEMENT ANALYSTS" data-math="N" transform="translate(664.35,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">MANAGEMENT ANALYSTS</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="COMPUTER PROGRAMMERS" data-math="N" transform="translate(754.25,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">COMPUTER PROGRAMMERS</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="BUSINESS INTELLIGENCE ANALYSTS" data-math="N" transform="translate(844.15,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">BUSINESS INTELLIGENCE ANALYSTS</text></g><g class="xtick"><text text-anchor="end" x="-2.0999999999999996" y="494.4" data-unformatted="STATISTICIANS" data-math="N" transform="translate(934.05,0) rotate(-90,-2.0999999999999996,488.4)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">STATISTICIANS</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="0" data-math="N" transform="translate(0,485)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">0</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="20k" data-math="N" transform="translate(0,437.71)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">20k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="40k" data-math="N" transform="translate(0,390.41)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">40k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="60k" data-math="N" transform="translate(0,343.12)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">60k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="80k" data-math="N" transform="translate(0,295.83000000000004)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">80k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="100k" data-math="N" transform="translate(0,248.53)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">100k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="120k" data-math="N" transform="translate(0,201.24)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">120k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="140k" data-math="N" transform="translate(0,153.94)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">140k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="160k" data-math="N" transform="translate(0,106.65)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">160k</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1058.73" height="750"><defs id="topdefs-6ac703"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="infolayer"><g class="g-gtitle"><text class="gtitle" x="529.365" y="50" text-anchor="middle" dy="0em" data-unformatted="Top Roles (Up to 10) per State" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 17px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Top Roles (Up to 10) per State</text></g><g class="g-xtitle"></g><g class="g-ytitle"><text class="ytitle" transform="rotate(-90,42,292.5)" x="42" y="292.5" text-anchor="middle" data-unformatted="Count" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Count</text></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-6ac703" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Zoom" data-attr="dragmode" data-val="zoom" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000-25l-250 251c40 63 63 138 63 218 0 224-182 406-407 406-224 0-406-182-406-406s183-406 407-406c80 0 155 22 218 62l250-250 125 125z m-812 250l0 438 437 0 0-438-437 0z m62 375l313 0 0-312-313 0 0 312z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Autoscale" data-attr="zoom" data-val="auto" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m250 850l-187 0-63 0 0-62 0-188 63 0 0 188 187 0 0 62z m688 0l-188 0 0-62 188 0 0-188 62 0 0 188 0 62-62 0z m-875-938l0 188-63 0 0-188 0-62 63 0 187 0 0 62-187 0z m875 188l0-188-188 0 0-62 188 0 62 0 0 62 0 188-62 0z m-125 188l-1 0-93-94-156 156 156 156 92-93 2 0 0 250-250 0 0-2 93-92-156-156-156 156 94 92 0 2-250 0 0-250 0 0 93 93 157-156-157-156-93 94 0 0 0-250 250 0 0 0-94 93 156 157 156-157-93-93 0 0 250 0 0 250z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset axes" data-attr="zoom" data-val="reset" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Toggle Spike Lines" data-attr="_cartesianSpikesEnabled" data-val="on" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="M512 409c0-57-46-104-103-104-57 0-104 47-104 104 0 57 47 103 104 103 57 0 103-46 103-103z m-327-39l92 0 0 92-92 0z m-185 0l92 0 0 92-92 0z m370-186l92 0 0 93-92 0z m0-184l92 0 0 92-92 0z" transform="matrix(1.5 0 0 -1.5 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Show closest data on hover" data-attr="hovermode" data-val="closest" data-toggle="false" data-gravity="ne"><svg viewBox="0 0 1500 1000" class="icon" height="1em" width="1em"><path d="m375 725l0 0-375-375 375-374 0-1 1125 0 0 750-1125 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn active" data-title="Compare data on hover" data-attr="hovermode" data-val="x" data-toggle="false" data-gravity="ne"><svg viewBox="0 0 1125 1000" class="icon" height="1em" width="1em"><path d="m187 786l0 2-187-188 188-187 0 0 937 0 0 373-938 0z m0-499l0 1-187-188 188-188 0 0 937 0 0 376-938-1z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs><style>.cls-1 {fill: #3f4f75;} .cls-2 {fill: #80cfbe;} .cls-3 {fill: #fff;}</style></defs><title>plotly-logomark</title><g id="symbol"><rect class="cls-1" width="132" height="132" rx="6" ry="6"></rect><circle class="cls-2" cx="78" cy="54" r="6"></circle><circle class="cls-2" cx="102" cy="30" r="6"></circle><circle class="cls-2" cx="78" cy="30" r="6"></circle><circle class="cls-2" cx="54" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="54" r="6"></circle><path class="cls-3" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path><path class="cls-3" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path><path class="cls-3" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path><path class="cls-3" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path></g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1058.73" height="750"><g class="hoverlayer"></g></svg></div></div></div>
+    <script type="text/javascript" src="./Project3_Group1_files/stateData.js"></script>    
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <h2>Compensation Trends</h2>
+                            <p>There are several factors that influence salary for data analysts. In general, with a range of $50,000 to $120,000 per year, the average data analyst salary sits at $77,110, according to Indeed.com. </p>
+                            <p>Experience matters as well. New analysts can expect on average, $73,000, which rises to $81,600 with 3 to 5 years, and $91,200 with 10 plus years of experience.</p>
+                            <p>High earning analysts prioritize their skills, and depending on the industry, certain skills will be compensated more than others. Across the board, SQL and Excel are probably most important. Next in line is a statistical language such as Python or R.</p>
+                            <p>Analysts strong in statistics and probability, such as math majors, will be in demand, since this kind of processing and organization builds into the bread and butter of data analysis, visualization. Whether through Python or Business Intelligence programs such as PowerBI or Tableau, data can and should tell as story.</p>
+                            <p>Demand for skilled data analysts is growing — the World Economic Forum Future of Jobs 2020 report listed this career as number one in terms of increasing demand. </p>
+                            <p>Not to be overlooked, there are common benefits to the position. Most companies hiring data analysts will have comfortable office space, or remote work, and with those usually comes benefits. Analysts can expect 401(k), employee stock purchase plan, a range of health and dental insurance, tuition reimbursement, and the list goes on.</p>
+                            <!--We used __________ to find average Salary ranges and compensation<-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <div id="linePlot" class="js-plotly-plot"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 1245.58px; height: 450px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1245.58" height="450" style="background: rgb(255, 255, 255);"><defs id="defs-c24813"><g class="clips"><clippath id="clipc24813xyplot" class="plotclip"><rect width="977" height="270"></rect></clippath><clippath class="axesclip" id="clipc24813x"><rect x="80" y="0" width="977" height="450"></rect></clippath><clippath class="axesclip" id="clipc24813y"><rect x="0" y="100" width="1245.58" height="270"></rect></clippath><clippath class="axesclip" id="clipc24813xy"><rect x="80" y="100" width="977" height="270"></rect></clippath></g><g class="gradients"></g></defs><g class="bglayer"></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="80" y="100" width="977" height="270" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="60" y="80" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="1057" y="80" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="60" y="370" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="1057" y="370" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="177.7" y="370.5" width="781.6" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="80" y="370.5" width="97.7" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="959.3000000000001" y="370.5" width="97.7" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="59.5" y="127" width="20" height="216" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="59.5" y="343" width="20" height="27" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="59.5" y="100" width="20" height="27" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="gridlayer"><g class="x"><path class="xgrid crisp" transform="translate(132.6,0)" d="M0,100v270" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(423.2,0)" d="M0,100v270" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(713.8,0)" d="M0,100v270" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(1004.4,0)" d="M0,100v270" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path></g><g class="y"><path class="ygrid crisp" transform="translate(0,352.75)" d="M80,0h977" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,315.37)" d="M80,0h977" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,277.99)" d="M80,0h977" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,240.61)" d="M80,0h977" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,203.23000000000002)" d="M80,0h977" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,165.85)" d="M80,0h977" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,128.46)" d="M80,0h977" style="stroke: rgb(238, 238, 238); stroke-opacity: 1; stroke-width: 1px;"></path></g></g><g class="zerolinelayer"></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="plot" transform="translate(80,100)" clip-path="url(&#39;#clipc24813xyplot&#39;)"><g class="scatterlayer mlayer"><g class="trace scatter trace38b5d5" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M52.6,168.64L343.2,159.3L633.8,112.57L924.4,17.25" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(31, 119, 180); stroke-opacity: 1; stroke-width: 2px; opacity: 1;"></path></g><g class="points"><path class="point" transform="translate(52.6,168.64)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"></path><path class="point" transform="translate(343.2,159.3)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"></path><path class="point" transform="translate(633.8,112.57)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"></path><path class="point" transform="translate(924.4,17.25)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"></path></g><g class="text"></g></g><g class="trace scatter traced4e4b9" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M52.6,252.75L343.2,177.99L633.8,129.39L924.4,36.31" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(255, 127, 14); stroke-opacity: 1; stroke-width: 2px; opacity: 1;"></path></g><g class="points"><path class="point" transform="translate(52.6,252.75)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(255, 127, 14); fill-opacity: 1;"></path><path class="point" transform="translate(343.2,177.99)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(255, 127, 14); fill-opacity: 1;"></path><path class="point" transform="translate(633.8,129.39)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(255, 127, 14); fill-opacity: 1;"></path><path class="point" transform="translate(924.4,36.31)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(255, 127, 14); fill-opacity: 1;"></path></g><g class="text"></g></g></g></g><g class="overplot"></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="383" data-unformatted="Entry Level" data-math="N" transform="translate(132.6,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Entry Level</text></g><g class="xtick"><text text-anchor="middle" x="0" y="383" data-unformatted="Intermediate" data-math="N" transform="translate(423.2,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Intermediate</text></g><g class="xtick"><text text-anchor="middle" x="0" y="383" data-unformatted="Middle-level" data-math="N" transform="translate(713.8,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Middle-level</text></g><g class="xtick"><text text-anchor="middle" x="0" y="383" data-unformatted="Senior" data-math="N" transform="translate(1004.4,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Senior</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="80k" data-math="N" transform="translate(0,352.75)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">80k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="100k" data-math="N" transform="translate(0,315.37)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">100k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="120k" data-math="N" transform="translate(0,277.99)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">120k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="140k" data-math="N" transform="translate(0,240.61)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">140k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="160k" data-math="N" transform="translate(0,203.23000000000002)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">160k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="180k" data-math="N" transform="translate(0,165.85)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">180k</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="200k" data-math="N" transform="translate(0,128.46)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">200k</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1245.58" height="450"><defs id="topdefs-c24813"><g class="clips"></g><clippath id="legendc24813"><rect width="157" height="48" x="0" y="0"></rect></clippath></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="infolayer"><g class="legend" pointer-events="all" transform="translate(1076.54,100)"><rect class="bg" shape-rendering="crispEdges" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; stroke-width: 0px;" width="157" height="48" x="0" y="0"></rect><g class="scrollbox" transform="" clip-path="url(&#39;#legendc24813&#39;)"><g class="groups"><g class="traces" transform="translate(0,14.5)" style="opacity: 1;"><text class="legendtext" text-anchor="start" x="40" y="4.680000000000001" data-unformatted="Engineer/Architect" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Engineer/Architect</text><g class="layers" style="opacity: 1;"><g class="legendfill"></g><g class="legendlines"><path class="js-line" d="M5,0h30" style="fill: none; stroke: rgb(31, 119, 180); stroke-opacity: 1; stroke-width: 2px;"></path></g><g class="legendsymbols"><g class="legendpoints"><path class="scatterpts" transform="translate(20,0)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"></path></g></g></g><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="151.734375" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"></rect></g><g class="traces" transform="translate(0,33.5)" style="opacity: 1;"><text class="legendtext" text-anchor="start" x="40" y="4.680000000000001" data-unformatted="Science/Analyst" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Science/Analyst</text><g class="layers" style="opacity: 1;"><g class="legendfill"></g><g class="legendlines"><path class="js-line" d="M5,0h30" style="fill: none; stroke: rgb(255, 127, 14); stroke-opacity: 1; stroke-width: 2px;"></path></g><g class="legendsymbols"><g class="legendpoints"><path class="scatterpts" transform="translate(20,0)" d="M3,0A3,3 0 1,1 0,-3A3,3 0 0,1 3,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(255, 127, 14); fill-opacity: 1;"></path></g></g></g><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="151.734375" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"></rect></g></g></g><rect class="scrollbar" rx="20" ry="3" width="0" height="0" style="fill: rgb(128, 139, 164); fill-opacity: 1;" x="0" y="0"></rect></g><g class="g-gtitle"><text class="gtitle" x="622.79" y="50" text-anchor="middle" dy="0em" data-unformatted="Comparison of Data Occupation Routes Over Time" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 17px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Comparison of Data Occupation Routes Over Time</text></g><g class="g-xtitle"></g><g class="g-ytitle"><text class="ytitle" transform="rotate(-90,42,235)" x="42" y="235" text-anchor="middle" data-unformatted="Salary" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Salary</text></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-c24813" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Zoom" data-attr="dragmode" data-val="zoom" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000-25l-250 251c40 63 63 138 63 218 0 224-182 406-407 406-224 0-406-182-406-406s183-406 407-406c80 0 155 22 218 62l250-250 125 125z m-812 250l0 438 437 0 0-438-437 0z m62 375l313 0 0-312-313 0 0 312z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Autoscale" data-attr="zoom" data-val="auto" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m250 850l-187 0-63 0 0-62 0-188 63 0 0 188 187 0 0 62z m688 0l-188 0 0-62 188 0 0-188 62 0 0 188 0 62-62 0z m-875-938l0 188-63 0 0-188 0-62 63 0 187 0 0 62-187 0z m875 188l0-188-188 0 0-62 188 0 62 0 0 62 0 188-62 0z m-125 188l-1 0-93-94-156 156 156 156 92-93 2 0 0 250-250 0 0-2 93-92-156-156-156 156 94 92 0 2-250 0 0-250 0 0 93 93 157-156-157-156-93 94 0 0 0-250 250 0 0 0-94 93 156 157 156-157-93-93 0 0 250 0 0 250z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset axes" data-attr="zoom" data-val="reset" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Toggle Spike Lines" data-attr="_cartesianSpikesEnabled" data-val="on" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="M512 409c0-57-46-104-103-104-57 0-104 47-104 104 0 57 47 103 104 103 57 0 103-46 103-103z m-327-39l92 0 0 92-92 0z m-185 0l92 0 0 92-92 0z m370-186l92 0 0 93-92 0z m0-184l92 0 0 92-92 0z" transform="matrix(1.5 0 0 -1.5 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Show closest data on hover" data-attr="hovermode" data-val="closest" data-toggle="false" data-gravity="ne"><svg viewBox="0 0 1500 1000" class="icon" height="1em" width="1em"><path d="m375 725l0 0-375-375 375-374 0-1 1125 0 0 750-1125 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn active" data-title="Compare data on hover" data-attr="hovermode" data-val="x" data-toggle="false" data-gravity="ne"><svg viewBox="0 0 1125 1000" class="icon" height="1em" width="1em"><path d="m187 786l0 2-187-188 188-187 0 0 937 0 0 373-938 0z m0-499l0 1-187-188 188-188 0 0 937 0 0 376-938-1z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs><style>.cls-1 {fill: #3f4f75;} .cls-2 {fill: #80cfbe;} .cls-3 {fill: #fff;}</style></defs><title>plotly-logomark</title><g id="symbol"><rect class="cls-1" width="132" height="132" rx="6" ry="6"></rect><circle class="cls-2" cx="78" cy="54" r="6"></circle><circle class="cls-2" cx="102" cy="30" r="6"></circle><circle class="cls-2" cx="78" cy="30" r="6"></circle><circle class="cls-2" cx="54" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="54" r="6"></circle><path class="cls-3" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path><path class="cls-3" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path><path class="cls-3" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path><path class="cls-3" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path></g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1245.58" height="450"><g class="hoverlayer"></g></svg></div></div></div>
+    <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script> -->
+    <script type="text/javascript" src="./Project3_Group1_files/professionData.js"></script>         
+
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <h2>Highest Demand</h2>
+                            <p>The top 3 states with the highest demand for Data Analysts are California, New York, and Texas for several key reasons. These states are home to some of the largest metropolitan areas in the United States including Silicon Valley in California, the Dallas-Fort Worth metroplex in Texas, and the New York City metropolitan area. These regions serve as epicenters for numerous industries such as technology, finance, healthcare, and e-commerce.</p>
+                            <p>All of which heavily rely on data analysis to make informed decisions and drive business growth. These states are home to robust ecosystems of universities, research institutions, and tech companies which support a talent pool of data analysts and provide an environment for innovation and data-driven solutions. Additionally, their overall economic vitality and the high cost of living make them attractive destinations for both established companies and startups, further increasing the demand for data analysts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="./Project3_Group1_files/6.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(361px, 233px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/5.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(361px, -23px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/6(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(105px, 233px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/6(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(617px, 233px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/7.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(361px, 489px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/5(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(105px, -23px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/5(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(617px, -23px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/7(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(105px, 489px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/7(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(617px, 489px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/6(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-151px, 233px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/6(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(873px, 233px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/5(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-151px, -23px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/5(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(873px, -23px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/7(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-151px, 489px, 0px); opacity: 1;"><img alt="" src="./Project3_Group1_files/7(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(873px, 489px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="1271" height="661" viewBox="-106 -55 1271 661" style="transform: translate3d(-106px, -55px, 0px);"><g><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M646.244964977778,356.06595083031925a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(252,163,93)" fill-opacity="0.5" fill-rule="evenodd" d="M588.1578112,316.59485510888953a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M369.00021617777793,332.52216247523893a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(163,246,0)" fill-opacity="0.5" fill-rule="evenodd" d="M262.2893070222224,294.2573293820092a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M428.4351488,254.28185073997838a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M799.4238335999999,223.50601552713488a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M756.5308885333334,263.7538702371867a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M772.6629546666668,263.6673011081871a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M702.5318656000002,417.1960114357628a11,11 0 1,0 22,0 a11,11 0 1,0 -22,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M685.7011783111111,358.1868525186576a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(255,95,101)" fill-opacity="0.5" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M573.7550350222223,219.33943031703257a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M329.4905557333336,185.28894521743223a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M605.8434147555558,238.04774795829871a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M658.0353251555557,239.39852923432045a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M513.4681344000003,262.20787441364564a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M675.1944618666669,279.2359461756737a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(255,95,101)" fill-opacity="0.5" fill-rule="evenodd" d="M587.5943936000001,370.438072693644a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M813.8264945777778,211.1319897460353a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M754.9926499555559,261.63711234955963a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M845.8648860444446,166.32636089862103a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M652.0353251555557,181.2654416626333a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M552.6848711111113,142.09959050556085a11,11 0 1,0 22,0 a11,11 0 1,0 -22,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M587.1578112,277.4259884476578a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(255,95,101)" fill-opacity="0.5" fill-rule="evenodd" d="M619.8434147555558,355.58393303597813a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(255,95,101)" fill-opacity="0.5" fill-rule="evenodd" d="M381.31924906666677,139.66701975726687a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M729.9359644444444,308.7558659136239a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(252,163,93)" fill-opacity="0.5" fill-rule="evenodd" d="M486.8215523555557,128.40755311919293a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M495.33937208888915,225.20594766907107a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M820.6651946666666,199.03247645098236a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M772.4289237333335,246.54656464718437a22,22 0 1,0 44,0 a22,22 0 1,0 -44,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M441.96511431111117,319.78656721595166a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M309.4060629333337,265.26864721043717a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M777.5648512,197.20957001068973a19,19 0 1,0 38,0 a19,19 0 1,0 -38,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M685.7011783111111,241.37583429312008a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M529.2988216888889,319.28936212660983a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(163,246,0)" fill-opacity="0.5" fill-rule="evenodd" d="M261.36109084444456,189.44840409888093a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M748.697848888889,229.5222768105741a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(255,95,101)" fill-opacity="0.5" fill-rule="evenodd" d="M880.352082488889,534.1001103507283a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M820.7456967111111,223.88521866783412a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M710.5371733333336,335.4482964401582a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(255,95,101)" fill-opacity="0.5" fill-rule="evenodd" d="M500.33937208888915,186.8602132748622a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M645.9069141333334,312.1589064036259a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M484.33937208888915,360.6131621857801a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M369.00021617777793,257.66405623118953a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(247,219,17)" fill-opacity="0.5" fill-rule="evenodd" d="M732.0593393777781,285.028435287652a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M809.225453511111,177.48583982862942a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M253.24552960000005,124.93388170519256a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(220,244,0)" fill-opacity="0.5" fill-rule="evenodd" d="M620.7913685333333,189.73552263584315a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(253,183,42)" fill-opacity="0.5" fill-rule="evenodd" d="M721.6019925333335,268.27259305738676a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="rgb(255,95,101)" fill-opacity="0.5" fill-rule="evenodd" d="M416.27499093333336,200.88118317955036a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path></g></svg></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="http://127.0.0.1:5500/Project_3.1/Project_3/javascript/templates/index.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="http://127.0.0.1:5500/Project_3.1/Project_3/javascript/templates/index.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-layers leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="http://127.0.0.1:5500/Project_3.1/Project_3/javascript/templates/index.html#" title="Layers" role="button"></a><section class="leaflet-control-layers-list"><div class="leaflet-control-layers-base"><label><span><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_163" checked="checked"><span> Street Map</span></span></label><label><span><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_163"><span> Topographic Map</span></span></label><label><span><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_163"><span> Satellite Map</span></span></label></div><div class="leaflet-control-layers-separator"></div><div class="leaflet-control-layers-overlays"><label><span><input type="checkbox" class="leaflet-control-layers-selector" checked=""><span> Employement</span></span></label></div></section></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="legend leaflet-control"><i style="background: rgb(255,95,101)"></i>&lt;65k<br><i style="background: rgb(252,163,93)"></i>65k-70k<br><i style="background: rgb(253,183,42)"></i>70k-75k<br><i style="background: rgb(247,219,17)"></i>75k-80k<br><i style="background: rgb(220,244,0)"></i>80k-85k<br><i style="background: rgb(163,246,0)"></i>85k+<br></div><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</div></div></div></div>
+    <script src="./Project3_Group1_files/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="./Project3_Group1_files/d3.v7.min.js"></script>
+    <script type="text/javascript" src="./Project3_Group1_files/nationData.js"></script>            
+
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component"></div>
+                </div>
+            </div>
+        </div>                
+    </section>                    
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>        
+        <div class="quote">
+	        <div class="large-quote-component large-quote-component--photo-bg">
+		        <div class="container">
+			        <div class="large-quote-component__content">
+				        <div class="large-quote-component__text-wrapper">
+					        <div class="large-quote-component__text">
+						        <blockquote>
+						            <p class="h1"><span class="large-quote-component__text-highlight">By focusing on developing skills such as creativity, emotional intelligence, problem-solving, adaptability, and communication, you can future-proof your career and ensure your long-term success</span></p>
+						        </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+    <!--<img src="../../resources/images/3959399.jpg" alt="Project3_Group1" width="1300" height="500">-->      
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <h2>Summary: Five measures for future proofing</h2>
+                            <p>Due to technological advancements in the modern age, learning new skills have become apparent to cope with the demands and changes in various fields. The skills of a Data Analyst can help with future proofing.</p>
+                                <h4>Creativity</h4>
+                                    <p>Exposure to at least the top five most commonly needed skills in data analytics are SQL, Excel, Python, Tableau, and Power BI.</p>
+                                        <h4>Emotional Intelligence</h4>
+                                            <p>The ability to manage empathy, effective communication, self-awareness, self-regulation, and motivation are some key components to identify which skills compliment a desired career path,and will enhance the ability of a job seeker to hone in on the field to which they are best suited.</p>
+                                                <h4>Problem-Solving</h4>
+                                                    <p>Becoming an active listener is one primary skill needed to become a prolific problem solver. Data analytics often involve the need to identify a problem, analyze possible solutions, and then decide on the best course of action.</p>
+                                                        <h4>Adaptability</h4>
+                                                            <p>Learning to maintain an open mind to adjust to new situations that can rapidly change. Being able to absorb constructive criticism, and work through worst-case scenarios.</p>
+                                                                <h4>Communication</h4>
+                                                                    <p>The skill of being able to take technical and or complicated information and present in a clear and concise format that anyone can understand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <section>
+        <div class="section container responsivegrid">
+            <div class="parsys sectionpar">
+                <div class="text parbase section">
+                    <div class="text-component">
+                        <h2>Works Cited</h2>
+                        <p>Foote, Keith E. “A Brief History of Analytics.” Dataversity.net,  Publication date 20 Sept 2021, Accessed Date 17 Sept 2023,    https://www.dataversity.net/brief-history-analytics/</p>
+                        <p>“Frederick Winslow Taylor.” Wikipedia, Wikimedia Foundation, Date of last modification 1 Oct 2023, https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor.</p>
+                        <p>Yosifova, Aleksandra.  “The Data Analyst Job Outlook in 2023: Research on 1,000+ LinkedIn Job Postings.” 365datascience.com, Publication date: 10 Aug 2023.  https://365datascience.com/career-advice/data-analyst-job-outlook/</p>
+                        <p>(Compensation 1:  https://www.indeed.com/career/data-analyst/salaries)</p>
+                        <p>(Compensation 2:  https://www3.weforum.org/docs/WEF_Data_Science_In_the_New_Economy.pdf)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>      
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg><svg id="js-plotly-tester" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; left: -10000px; top: -10000px; width: 9000px; height: 9000px; z-index: 1;"><path class="js-reference-point" d="M0,0H1V1H0Z" style="stroke-width: 0; fill: black;"></path></svg></body></html>

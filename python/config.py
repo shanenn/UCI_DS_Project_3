@@ -1,0 +1,10 @@
+def host():
+    return "uci-project-3.cbsu1or2rwrp.us-west-1.rds.amazonaws.com"
+def port():
+    return '5432'
+def database():
+    return "Database_1"
+def user():
+    return "Project_3"
+def password():
+    return 'Sp110497!'

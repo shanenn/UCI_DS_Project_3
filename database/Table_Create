@@ -1,0 +1,75 @@
+
+CREATE TABLE IF NOT EXISTS public."GSEARCH"
+(
+    "INDEX" character varying(200) COLLATE pg_catalog."default",
+    "TITLE" character varying(200) COLLATE pg_catalog."default",
+    "COMPANY_NAME" character varying(200) COLLATE pg_catalog."default",
+    "VIA" character varying(200) COLLATE pg_catalog."default",
+    "DESCRIPTION_TOKEN" character varying(300) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."GSEARCH"
+    OWNER to "Project_3";
+
+
+
+
+
+
+
+    CREATE TABLE IF NOT EXISTS public."H_1B_Disclosure_Data"
+(
+    "CASE_NUMBER" text COLLATE pg_catalog."default",
+    "RECEIVED_DATE" timestamp without time zone,
+    "DECISION_DATE" timestamp without time zone,
+    "SOC_TITLE" text COLLATE pg_catalog."default",
+    "FULL_TIME_POSITION" text COLLATE pg_catalog."default",
+    "BEGIN_DATE" timestamp without time zone,
+    "END_DATE" timestamp without time zone,
+    "EMPLOYER_NAME" text COLLATE pg_catalog."default",
+    "EMPLOYER_CITY" text COLLATE pg_catalog."default",
+    "EMPLOYER_STATE" text COLLATE pg_catalog."default",
+    "EMPLOYER_POSTAL_CODE" text COLLATE pg_catalog."default",
+    "WAGE_RATE_OF_PAY_FROM" numeric(20,2),
+    "WAGE_UNIT_OF_PAY" text COLLATE pg_catalog."default",
+    "PREVAILING_WAGE" numeric(20,2),
+    "PW_UNIT_OF_PAY" text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."H_1B_Disclosure_Data"
+    OWNER to "Project_3";
+
+
+
+
+
+
+
+
+    CREATE TABLE IF NOT EXISTS public."LCA_Disclosure_Data"
+(
+    "CASE_NUMBER" text COLLATE pg_catalog."default",
+    "RECEIVED_DATE" timestamp without time zone,
+    "DECISION_DATE" timestamp without time zone,
+    "SOC_TITLE" text COLLATE pg_catalog."default",
+    "FULL_TIME_POSITION" text COLLATE pg_catalog."default",
+    "BEGIN_DATE" timestamp without time zone,
+    "END_DATE" timestamp without time zone,
+    "EMPLOYER_NAME" text COLLATE pg_catalog."default",
+    "EMPLOYER_CITY" text COLLATE pg_catalog."default",
+    "EMPLOYER_STATE" text COLLATE pg_catalog."default",
+    "EMPLOYER_POSTAL_CODE" text COLLATE pg_catalog."default",
+    "WAGE_RATE_OF_PAY_FROM" numeric(20,2),
+    "WAGE_UNIT_OF_PAY" text COLLATE pg_catalog."default",
+    "PREVAILING_WAGE" numeric(20,2),
+    "PW_UNIT_OF_PAY" text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."LCA_Disclosure_Data"
+    OWNER to "Project_3";
